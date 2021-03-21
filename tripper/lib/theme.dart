@@ -20,6 +20,17 @@ ThemeData ApplicationTheme(BuildContext context) {
         textStyle: TextStyle(color: Colors.white),
       ),
     ),
+    tabBarTheme: TabBarTheme(
+      labelStyle: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+        letterSpacing: 0.25,
+      ),
+      unselectedLabelStyle: TextStyle(
+        fontWeight: FontWeight.w500,
+      ),
+      labelColor: Colors.white,
+    ),
     inputDecorationTheme: Theme.of(context).inputDecorationTheme.copyWith(
           contentPadding: EdgeInsets.only(left: 10),
           isCollapsed: true,

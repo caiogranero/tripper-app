@@ -27,7 +27,8 @@ class MainButton extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-              color: Colors.white), // Não deveria precisar colocar isso :)
+            color: Colors.white,
+          ), // Não deveria precisar colocar isso :)
         ),
         onPressed: onPressed,
       ),

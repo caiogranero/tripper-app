@@ -12,12 +12,12 @@ ThemeData ApplicationTheme(BuildContext context) {
     accentColor: Color.fromRGBO(255, 140, 32, 1),
     buttonColor: mainColor,
     scaffoldBackgroundColor: Colors.white,
-    // backgroundColor: Colors.,
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         padding: EdgeInsets.symmetric(vertical: 15),
         backgroundColor: mainColor,
         primary: Colors.white,
+        textStyle: TextStyle(color: Colors.white),
       ),
     ),
     inputDecorationTheme: Theme.of(context).inputDecorationTheme.copyWith(

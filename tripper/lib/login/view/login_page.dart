@@ -1,15 +1,14 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:tripper/pages/sign_in.dart';
-import 'package:tripper/pages/sign_up.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tripper/login/login.dart';
+import 'package:tripper/sign_up/sign_up.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({Key key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => LoginPage());
+  }
 
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,8 +40,14 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: TabBarView(
               children: [
-                SignInPage(),
-                SignUpPage(),
+                BlocProvider(
+                  create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
+                  child: LoginForm(),
+                ),
+                BlocProvider<SignUpCubit>(
+                  create: (_) => SignUpCubit(context.read<AuthenticationRepository>()),
+                  child: SignUpForm(),
+                ),
               ],
             ),
           ),

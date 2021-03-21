@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MainButton extends StatelessWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String label;
 
   const MainButton({
-    Key key,
-    @required this.label,
-    @required this.onPressed,
+    Key? key,
+    required this.label,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,11 @@ class MainButton extends StatelessWidget {
         ],
       ),
       child: TextButton(
-        child: Text(label),
+        child: Text(
+          label,
+          style: TextStyle(
+              color: Colors.white), // Não deveria precisar colocar isso :)
+        ),
         onPressed: onPressed,
       ),
     );

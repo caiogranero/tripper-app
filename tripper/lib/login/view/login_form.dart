@@ -104,9 +104,7 @@ class _ForgotPasswordButton extends StatelessWidget {
               color: Color.fromRGBO(30, 90, 255, 1),
             ),
           ),
-          onTap: () {
-            print("Forgot password");
-          },
+          onTap: () => context.read<LoginCubit>().resetPassword(),
         ),
       ),
     );

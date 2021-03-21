@@ -52,4 +52,18 @@ class LoginCubit extends Cubit<LoginState> {
       emit(state.copyWith(status: FormzStatus.pure));
     }
   }
+
+  Future<void> resetPassword() async {
+    if (!state.email.valid) {
+      emailChanged(state.email.value);
+      return;
+    }
+    emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    try {
+      await _authenticationRepository.resetPassword(email: state.email.value);
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    } on Exception {
+      emit(state.copyWith(status: FormzStatus.submissionFailure));
+    }
+  }
 }

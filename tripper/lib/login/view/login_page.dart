@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
                 Tab(text: 'Sign up'),
               ],
               indicatorWeight: 5,
-              indicatorColor: Color.fromRGBO(30, 90, 255, 1),
+              indicatorColor: CustomColors.mainColorSoft,
             ),
           ),
           body: Padding(

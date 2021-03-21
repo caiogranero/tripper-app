@@ -4,6 +4,7 @@ import 'package:tripper/components/main_button.dart';
 import 'package:tripper/components/text_field_generic.dart';
 import 'package:tripper/sign_up/sign_up.dart';
 import 'package:formz/formz.dart';
+import 'package:tripper/theme.dart';
 
 class SignUpForm extends StatelessWidget {
   @override
@@ -84,7 +85,7 @@ class _UploadPictureButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             side: BorderSide(
               width: 2.0,
-              color: Color.fromRGBO(30, 90, 255, 1),
+              color: CustomColors.mainColorSoft,
             ),
             shape: CircleBorder(),
           ),

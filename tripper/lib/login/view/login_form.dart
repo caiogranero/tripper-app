@@ -5,6 +5,7 @@ import 'package:tripper/components/main_button.dart';
 import 'package:tripper/components/text_field_generic.dart';
 import 'package:tripper/login/login.dart';
 import 'package:formz/formz.dart';
+import 'package:tripper/theme.dart';
 
 class LoginForm extends StatelessWidget {
   @override
@@ -101,7 +102,7 @@ class _ForgotPasswordButton extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: Color.fromRGBO(30, 90, 255, 1),
+              color: CustomColors.mainColorSoft,
             ),
           ),
           onTap: () => context.read<LoginCubit>().resetPassword(),

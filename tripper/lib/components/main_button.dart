@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tripper/theme.dart';
 
 class MainButton extends StatelessWidget {
   final VoidCallback? onPressed;
@@ -18,7 +19,7 @@ class MainButton extends StatelessWidget {
           BoxShadow(
             blurRadius: 25,
             offset: Offset(0, 10),
-            color: Color.fromRGBO(30, 90, 255, 1),
+            color: CustomColors.mainColorSoft,
             spreadRadius: -45,
           )
         ],

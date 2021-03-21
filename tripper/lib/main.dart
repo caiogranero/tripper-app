@@ -69,7 +69,7 @@ class _MyAppViewState extends State<MyAppView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ApplicationTheme(context),
+      theme: applicationTheme(context),
       home: LoginPage(),
     );
   }
@@ -88,7 +88,7 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ApplicationTheme(context),
+      theme: applicationTheme(context),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(

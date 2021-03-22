@@ -12,36 +12,34 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: DefaultTabController(
-        initialIndex: 1,
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            toolbarHeight: MediaQuery.of(context).size.height / 4,
-            bottom: TabBar(
-              tabs: [
-                Tab(text: 'Sign in'),
-                Tab(text: 'Sign up'),
-              ],
-              indicatorWeight: 5,
-              indicatorColor: CustomColors.mainColorSoft,
-            ),
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: MediaQuery.of(context).size.height / 4,
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Sign in'),
+              Tab(text: 'Sign up'),
+            ],
+            indicatorWeight: 5,
+            indicatorColor: CustomColors.mainColorSoft,
           ),
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: TabBarView(
-              children: [
-                BlocProvider(
-                  create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
-                  child: LoginForm(),
-                ),
-                BlocProvider<SignUpCubit>(
-                  create: (_) => SignUpCubit(context.read<AuthenticationRepository>()),
-                  child: SignUpForm(),
-                ),
-              ],
-            ),
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: TabBarView(
+            children: [
+              BlocProvider(
+                create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
+                child: LoginForm(),
+              ),
+              BlocProvider<SignUpCubit>(
+                create: (_) => SignUpCubit(context.read<AuthenticationRepository>()),
+                child: SignUpForm(),
+              ),
+            ],
           ),
         ),
       ),

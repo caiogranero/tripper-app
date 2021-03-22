@@ -26,7 +26,7 @@ class MainButton extends StatelessWidget {
       ),
       child: TextButton(
         child: Text(
-          label,
+          label.toUpperCase(),
           style: TextStyle(
             color: Colors.white,
           ), // Não deveria precisar colocar isso :)

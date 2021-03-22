@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
     required this.userRepository,
   }) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
@@ -45,32 +44,9 @@ class MyApp extends StatelessWidget {
       child: BlocProvider(
         create: (_) => AuthenticationBloc(
           authenticationRepository: authenticationRepository,
-          // userRepository: userRepository,
         ),
         child: AppView(),
       ),
-    );
-  }
-}
-
-class MyAppView extends StatefulWidget {
-  MyAppView({Key? key}) : super(key: key);
-
-  @override
-  _MyAppViewState createState() => _MyAppViewState();
-}
-
-class _MyAppViewState extends State<MyAppView> {
-  // final _navigatorKey = GlobalKey<NavigatorState>();
-
-  // NavigatorState get _navigator => _navigatorKey.currentState!;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: applicationTheme(context),
-      home: LoginPage(),
     );
   }
 }

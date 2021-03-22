@@ -8,8 +8,7 @@ import 'package:pedantic/pedantic.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({
     required AuthenticationRepository authenticationRepository,
   })   : _authenticationRepository = authenticationRepository,
@@ -42,8 +41,6 @@ class AuthenticationBloc
   AuthenticationState _mapAuthenticationUserChangedToState(
     AuthenticationUserChanged event,
   ) {
-    return event.user != User.empty
-        ? AuthenticationState.authenticated(event.user)
-        : const AuthenticationState.unauthenticated();
+    return event.user != User.empty ? AuthenticationState.authenticated(event.user) : const AuthenticationState.unauthenticated();
   }
 }

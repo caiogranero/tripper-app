@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
+// import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:tripper/components/main_button.dart';
 import 'package:tripper/components/text_field_generic.dart';
 import 'package:tripper/login/login.dart';
@@ -150,12 +150,12 @@ class _LoginButton extends StatelessWidget {
   }
 }
 
-class _GoogleLoginButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SignInButton(
-      Buttons.Google,
-      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
-    );
-  }
-}
+// class _GoogleLoginButton extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return SignInButton(
+//       Buttons.Google,
+//       onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
+//     );
+//   }
+// }

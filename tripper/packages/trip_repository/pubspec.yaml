@@ -1,5 +1,5 @@
-name: user_repository
-description: Dart package which manages the user domain.
+name: trip_repository
+description: Dart package which manages the trip domain.
 publish_to: none
 
 environment:

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:intl/intl.dart';
 import 'package:tripper/authentication/bloc/authentication_bloc.dart';
 import 'package:tripper/home/view/home_page.dart';
 import 'package:tripper/login/view/login_page.dart';
 import 'package:tripper/simple_bloc_observer.dart';
-// import 'package:tripper/pages/login.dart';
 import 'package:tripper/splash/view/splash_page.dart';
 import 'package:tripper/theme.dart';
 import 'package:authentication_repository/authentication_repository.dart';
@@ -14,39 +15,32 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
+  GetIt.I.registerSingleton<UserRepository>(UserRepository());
+  GetIt.I.registerSingleton<AuthenticationRepository>(AuthenticationRepository());
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   EquatableConfig.stringify = kDebugMode;
   Bloc.observer = SimpleBlocObserver();
+  await initializeDateFormatting('pt_BR', null);
+  Intl.defaultLocale = 'pt_BR';
 
-  runApp(MyApp(
-    authenticationRepository: AuthenticationRepository(),
-    userRepository: UserRepository(),
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final AuthenticationRepository authenticationRepository;
-  final UserRepository userRepository;
-
   const MyApp({
     Key? key,
-    required this.authenticationRepository,
-    required this.userRepository,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider.value(
-      value: authenticationRepository,
-      child: BlocProvider(
-        create: (_) => AuthenticationBloc(
-          authenticationRepository: authenticationRepository,
-        ),
-        child: AppView(),
-      ),
+    return BlocProvider(
+      create: (_) => AuthenticationBloc(),
+      child: AppView(),
     );
   }
 }

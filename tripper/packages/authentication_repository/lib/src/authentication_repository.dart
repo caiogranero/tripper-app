@@ -45,6 +45,12 @@ class AuthenticationRepository {
     });
   }
 
+  String get userId {
+    var user = _firebaseAuth.currentUser;
+
+    return user != null ? user.toUser.id : '';
+  }
+
   /// Creates a new user with the provided [email] and [password].
   ///
   /// Throws a [SignUpFailure] if an exception occurs.

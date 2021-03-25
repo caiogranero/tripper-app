@@ -34,13 +34,19 @@ dependencies:
   font_awesome_flutter: ^9.0.0
   formz: ^0.4.0-nullsafety.0
   pedantic: ^1.11.0
+  rxdart: ^0.26.0
   meta: ^1.1.8
   flutter_signin_button: ^2.0.0-nullsafety.0
-
+  carousel_slider: ^4.0.0-nullsafety.0
+  get_it: ^6.0.0
+  intl: ^0.17.0
+  
   authentication_repository:
     path: packages/authentication_repository
   user_repository:
     path: packages/user_repository
+  trip_repository:
+    path: packages/trip_repository
 
 dev_dependencies:
   flutter_test:

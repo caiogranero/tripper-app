@@ -1,15 +1,18 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tripper/authentication/authentication.dart';
 import 'package:formz/formz.dart';
 
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
-  SignUpCubit(this._authenticationRepository) : super(const SignUpState());
+  SignUpCubit()
+      : _authenticationRepository = GetIt.I<AuthenticationRepository>(),
+        super(const SignUpState());
 
-  final AuthenticationRepository _authenticationRepository;
+  late AuthenticationRepository _authenticationRepository;
 
   void emailChanged(String value) {
     final email = Email.dirty(value);

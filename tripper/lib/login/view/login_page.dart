@@ -32,11 +32,11 @@ class LoginPage extends StatelessWidget {
           child: TabBarView(
             children: [
               BlocProvider(
-                create: (_) => LoginCubit(context.read<AuthenticationRepository>()),
+                create: (_) => LoginCubit(),
                 child: LoginForm(),
               ),
               BlocProvider<SignUpCubit>(
-                create: (_) => SignUpCubit(context.read<AuthenticationRepository>()),
+                create: (_) => SignUpCubit(),
                 child: SignUpForm(),
               ),
             ],

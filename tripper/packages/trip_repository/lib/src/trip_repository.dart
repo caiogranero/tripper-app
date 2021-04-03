@@ -22,6 +22,8 @@ class TripRepository {
   }
 
   List<Trip> _mapTrip(QuerySnapshot documents) {
-    return documents.docs.where((element) => element.exists).map((e) => Trip.fromEntity(TripEntity.fromJson(e.data()!))).toList();
+    return documents.docs.map((e) => Trip.fromEntity(TripEntity.fromJson(e.data()!))).toList();
   }
+
+  Future insert() async {}
 }

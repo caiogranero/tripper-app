@@ -107,15 +107,19 @@
 //       //   );
 //       // });
 
-//       test('calls createUserWithEmailAndPassword', () async {
-//         await authenticationRepository.signUp(email: email, password: password);
-//         verify(firebaseAuth.createUserWithEmailAndPassword(
-//           email: email,
-//           password: password,
-//         )).called(1);
-//       });
+// test('calls createUserWithEmailAndPassword', () async {
+//   await authenticationRepository.signUp(
+//     email: email,
+//     password: password,
+//   );
+//   verify(firebaseAuth.createUserWithEmailAndPassword(
+//     email: email,
+//     password: password,
+//   )).called(1);
+// });
 
-//       test('succeeds when createUserWithEmailAndPassword succeeds', () async {
+//       test('succeeds when createUserWithEmailAndPassword succeeds',
+// () async {
 //         expect(
 //           authenticationRepository.signUp(email: email, password: password),
 //           completes,
@@ -151,7 +155,8 @@
 //         ).thenAnswer((_) async => googleSignInAccount);
 //       });
 
-//       test('calls signIn authentication, and signInWithCredential', () async {
+//       test('calls signIn authentication, and signInWithCredential',
+// () async {
 //         await authenticationRepository.logInWithGoogle();
 //         verify(googleSignIn.signIn()).called(1);
 //         verify(firebaseAuth.signInWithCredential(any)).called(1);

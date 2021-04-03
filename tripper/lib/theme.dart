@@ -17,6 +17,7 @@ ThemeData applicationTheme(BuildContext context) {
     scaffoldBackgroundColor: Colors.white,
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
+        onSurface: Colors.yellow,
         padding: EdgeInsets.symmetric(vertical: 15),
         backgroundColor: CustomColors.mainColor,
         primary: Colors.white,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
+import 'package:trip_repository/trip_repository.dart';
 import 'package:tripper/authentication/bloc/authentication_bloc.dart';
 import 'package:tripper/home/view/home_page.dart';
 import 'package:tripper/login/view/login_page.dart';
@@ -15,19 +17,18 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
-  GetIt.I.registerSingleton<UserRepository>(UserRepository());
-  GetIt.I.registerSingleton<AuthenticationRepository>(AuthenticationRepository());
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   EquatableConfig.stringify = kDebugMode;
   Bloc.observer = SimpleBlocObserver();
-  await initializeDateFormatting('pt_BR', null);
+  // await initializeDateFormatting('pt_BR', null);
   Intl.defaultLocale = 'pt_BR';
 
+  GetIt.I.registerSingleton<UserRepository>(UserRepository());
+  GetIt.I.registerSingleton<AuthenticationRepository>(AuthenticationRepository());
+  GetIt.I.registerSingleton<TripRepository>(TripRepository());
   runApp(MyApp());
 }
 
@@ -58,6 +59,11 @@ class _AppViewState extends State<AppView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [const Locale('pt', 'BR')],
       theme: applicationTheme(context),
       navigatorKey: _navigatorKey,
       builder: (context, child) {

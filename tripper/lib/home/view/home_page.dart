@@ -21,12 +21,12 @@ class HomePage extends StatelessWidget {
     final user = context.select((AuthenticationBloc bloc) => bloc.state.user);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: MediaQuery.of(context).size.height / 4,
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: _HomeTitle(user: user),
       ),
       body: BlocProvider<TripsBloc>(
-        create: (context) => TripsBloc(),
+        create: (context) => TripsBloc()..add(LoadTrips()),
         child: _HomePageView(),
       ),
     );
@@ -63,6 +63,22 @@ class _HomePageView extends StatelessWidget {
   }
 }
 
+class _NoTripsFounded extends StatelessWidget {
+  const _NoTripsFounded({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Image.asset('assets/images/4056364.jpg', height: 250),
+          // Text("Organize sua primeira viagem!"),
+        ],
+      ),
+    );
+  }
+}
+
 class _CreateTripButton extends StatefulWidget {
   const _CreateTripButton({Key? key}) : super(key: key);
 
@@ -74,7 +90,7 @@ class __CreateTripButtonState extends State<_CreateTripButton> {
   @override
   Widget build(BuildContext context) {
     return MainButton(
-      label: "CREATE NEW TRIP",
+      label: "Começar uma nova viagem",
       onPressed: () => Navigator.push(
         context,
         NewTripPage.route(),
@@ -105,7 +121,8 @@ class _OngoingTrips extends StatelessWidget {
             ),
           ),
           Padding(padding: EdgeInsets.only(top: 10)),
-          _OngoingTripsCarousel(trips: trips),
+          if (trips.length == 0) Align(alignment: Alignment.center, child: _NoTripsFounded()),
+          if (trips.length > 0) _OngoingTripsCarousel(trips: trips),
         ],
       ),
     );
@@ -130,7 +147,7 @@ class _OngoingTripsCarousel extends StatelessWidget {
       options: CarouselOptions(
         autoPlay: false,
         enableInfiniteScroll: false,
-        height: 230,
+        height: trips.length != 0 ? 230 : 0,
         viewportFraction: 0.99,
         initialPage: 0,
       ),
@@ -222,9 +239,9 @@ class _HomeTitle extends StatelessWidget {
             Text(
               "My Trips",
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ],

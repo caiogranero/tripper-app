@@ -1,8 +1,4 @@
-import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'models/models.dart';
 
 class UserRepository {
   final CollectionReference userCollection = FirebaseFirestore.instance.collection('users');
